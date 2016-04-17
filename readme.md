@@ -1,8 +1,11 @@
-To export your Google Maps starred locations:
+V2016.04.17
 
 Go to Google Bookmarks: https://www.google.com/bookmarks/
 
 On the bottom left, click "Export bookmarks": https://www.google.com/bookmarks/bookmarks.html?hl=en
+
+Install script dependencies:
+pip install simplekml
 
 After downloading the html file, run this script on it to generate a KML file per bookmark label.
 
