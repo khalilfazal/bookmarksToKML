@@ -15,7 +15,7 @@ import sys
 import time
 
 coords_in_content = re.compile('\/@(-?\d+\.\d+),(-?\d+\.\d+),')
-mobile_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36'
+user_agent = 'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/47.0.2526.73 Safari/537.36'
 
 filename = r'GoogleBookmarks.html'
 if(len(sys.argv) > 1):
@@ -28,7 +28,7 @@ with open(filename) as bookmarks_file:
 doc = document_fromstring(data)
 
 class Browser(FancyURLopener):
-    version = mobile_agent
+    version = user_agent
 
 for label in doc.body.iterfind('dl/dt/h3'):
     labelName = label.text_content()
@@ -62,7 +62,7 @@ for label in doc.body.iterfind('dl/dt/h3'):
                 longitude = coords[1]
 
             except (AttributeError, IndexError):
-                print('[Coordinates not found] ' + str(coords) + ' Try to update "mobile_agent"')
+                print('[Coordinates not found: ' + str(coords) + '. Try to update "user_agent"]')
                 continue
 
             print(latitude, longitude)
